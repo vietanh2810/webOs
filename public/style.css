@@ -1,0 +1,494 @@
+my-desktop {
+    background-image: url('./images/bg.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+        background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+my-taskbar {
+    /* Position and size */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    /* Background and color */
+    background-color: #000000c8;
+    /* Layout and alignment */
+    display: flex;
+    align-items: center;
+    /* Add padding */
+    padding: 0 10px;
+    justify-content: flex-end;
+  }
+
+  my-taskbar #date {
+    display: flex;
+    align-items: center;
+  }
+  
+  my-taskbar #clock, my-taskbar #date, my-taskbar #battery, my-taskbar #latency, my-taskbar #menu-button, my-taskbar #vibration 
+  {
+    /* Text properties */
+    color: #6bdb02 !important;
+    font-size: 13px;
+    display: inline-block;
+    /* Add padding */
+    padding: 0 5px;
+  }
+
+  my-taskbar #day, my-taskbar #dayOfWeek, my-taskbar #month, my-taskbar #year,
+  my-taskbar #hour, my-taskbar #minute, my-taskbar #second {
+    padding: 0 !important;
+    color: #6bdb02 !important;
+    font-size: 13px;
+    display: inline-block;
+  }
+  
+
+my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before, my-taskbar #latency::before, my-taskbar #vibration::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    padding-right: 5px;
+  }
+  
+  my-taskbar #menu-button {
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    border: none;
+  }
+
+  my-taskbar #menu-button:hover {
+    cursor: url(./images/too624.cur), auto;
+  }
+
+  my-taskbar #popup {
+    display: none;
+    position: absolute; 
+    left: 0;
+    top: 30px;
+    background-color:#000000c8;
+    width: 10%;
+    border-radius: 0 0 1rem 0;
+    height: auto;
+  }
+
+  my-taskbar #popup #setting,my-taskbar #popup #calculator,
+   my-taskbar #popup #tic-tac-toe, my-taskbar #popup #clockapp {
+    color: #6bdb02;
+    background-color: transparent;
+    font-family: "Font Awesome 5 Free";
+    border: none;
+    padding-left: 5px;
+  }
+
+  my-taskbar #setting:hover,my-taskbar #calculator:hover,
+   my-taskbar #tic-tac-toe:hover, my-taskbar #clockapp:hover  {
+    background-color: rgb(83, 121, 147) !important;
+    border-radius: 1rem;
+    cursor: url(./images/too624.cur), auto;
+  }
+
+  my-setting {
+    display: none; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* set the width to 400 pixels */
+    height: 600px; /* set the height to 600 pixels */
+    background-color: rgb(74, 73, 73); /* set the background color to white */
+    border-radius: 8px; /* give the element rounded corners */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); /* add a drop shadow */
+    padding: 20px; /* add padding to the element */
+  }
+
+  my-setting #close-button:hover, my-calculator #close-button:hover,
+   my-tic-tac-toe #close-button:hover, my-clock #close-button:hover {
+    background-color: #a43737;
+    cursor: url(./images/too624.cur), auto;
+  }
+
+  my-setting #close-button, my-calculator #close-button,
+   my-tic-tac-toe #close-button, my-clock #close-button {
+    background-color: #a43737;
+    border-radius: 3rem;
+    border: none;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+my-setting #top-bar, my-calculator #top-bar,
+ my-tic-tac-toe #top-bar, my-clock #top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: #212121c8;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: space-between;
+    border-radius: 8px 8px 0 0;
+}
+
+my-setting #top-bar p, my-calculator #top-bar p,
+ my-tic-tac-toe #top-bar p, my-clock #top-bar p {
+    color: #6bdb02 !important;
+    margin: 0;
+}
+
+my-setting .toggle-div{
+    height: 35px !important;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+my-setting button:hover {
+    cursor: url(./images/too624.cur), auto;
+}
+
+my-setting #latency-toggle-div p {
+  margin-right: 1rem;
+}
+
+my-setting .small-toggle {
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+}
+
+my-setting .toggle-btn {
+  position: absolute;
+  right: 0.5rem;
+  background-color: #6bdb02;
+  border-radius: 3rem;
+  border: none;
+}
+
+my-setting hr {
+  border: 0.5px solid gray;
+  margin: 10px 0;
+}
+
+my-setting .s-toggle-div {
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+my-setting .s-toggle-div p {
+  margin-left: 1rem;
+}
+
+my-setting .input-os {
+  background-color: transparent;
+  border: 3px solid gray;
+  border-radius: 15px;
+  padding-left: 0.5rem;
+}
+
+
+my-setting, my-calculator,
+ my-tic-tac-toe, my-clock {
+  display: none; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; /* set the width to 400 pixels */
+  height: 500px; /* set the height to 600 pixels */
+  background-color: rgb(74, 73, 73); /* set the background color to white */
+  border-radius: 8px; /* give the element rounded corners */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); /* add a drop shadow */
+  padding: 20px; /* add padding to the element */
+}
+
+my-setting {
+  height: 600px !important;
+}
+
+my-calculator button {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 20px;
+  text-align: center;
+}
+
+my-calculator #calculator-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem 0;
+  height: 100%;
+  width: fit-content;
+}
+
+my-calculator button {
+  width: 55px;
+  height: 55px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+my-calculator #close-button:hover, my-calculator #close-button:hover,
+ my-calculator #calculator-input:hover,
+ my-calculator button:hover,
+ my-tic-tac-toe #reset-div button:hover {
+  cursor: url(./images/too624.cur), auto;
+}
+
+my-calculator #calculator-input, my-clock #chrono-input, my-clock #minuterie-output {
+  background-color: transparent;
+  border: 3px solid gray;
+  border-radius: 15px;
+  padding: 0.5rem;
+  margin-top: 2rem;
+  width: 380px;
+  height: 80px;
+  font-size: 20px;
+  color: #6bdb02;
+}
+
+my-tic-tac-toe table {
+  border-collapse: collapse;
+  width: 80%;
+  height: 400px;
+  margin: 0 2rem auto;
+}
+  
+my-tic-tac-toe td {
+  border: 1px solid #6bdb02;
+  text-align: center;
+  vertical-align: middle;
+  width: 33.33%;
+  height: 100px;
+  font-size: 36px;
+}
+  
+my-tic-tac-toe  td:hover {
+  background-color: lightgray;
+  cursor: url(./images/too624.cur), auto;
+}
+
+my-tic-tac-toe #reset-div button {
+  width: 100px;
+  height: auto;
+  border: 1px solid #6bdb02;
+  background-color: transparent;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+my-tic-tac-toe #reset-div button:hover {
+  background-color: lightgray;
+  cursor: url(./images/too624.cur), auto;
+}
+
+my-clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; /* set the width to 400 pixels */
+  height: 500px; /* set the height to 600 pixels */
+  background-color: rgb(74, 73, 73); /* set the background color to white */
+  border-radius: 8px; /* give the element rounded corners */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); /* add a drop shadow */
+  padding: 20px; /* add padding to the element */
+}
+
+my-clock #tab-btn {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2rem;
+}
+
+my-clock #tab-btn button{
+  width: 100px;
+  height: 30px;
+  border: 1px solid #6bdb02;
+  background-color: transparent;
+  border-radius: 4px 4px 0 0;
+  border-bottom: transparent;
+  text-align: center;
+  margin-right: 0.2rem;
+}
+
+my-clock #tab-btn button:hover,my-clock  #clock-btn button:hover {
+  background-color: lightgray;
+  cursor: url(./images/too624.cur), auto;
+}
+
+my-clock #tab-content {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  border: 1px solid   #6bdb02;
+  border-radius: 0 4px 4px 4px;
+}
+
+my-clock #tab-content #clock {
+  margin-top: 70px;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  display: flex;
+  background: #fff url(./images/clock.png);
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: #6bdb02;
+  position: relative;
+  border: 20px solid #fff;
+}
+
+my-clock #tab-content #clock::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #6bdb02;
+  border: 2px solid #fff;
+  z-index: 100000;
+  border-radius: 50%;
+}
+
+my-clock .clock-hour,my-clock .clock-min, my-clock .clock-sec {
+  position: absolute;
+}
+
+my-clock .clock-hour, my-clock .hr {
+  width: 100px;
+  height: 100px;
+}
+
+my-clock .clock-min,my-clock .mn {
+  width: 140px;
+  height: 140px;
+}
+
+my-clock .clock-sec, my-clock .sc {
+  width: 160px;
+  height: 160px;
+}
+
+my-clock .hr, my-clock .mn, my-clock .sc {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  border-radius: 50%;
+}
+
+my-clock .hr::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 50px;
+  background: #6bdb02;
+  z-index: 10;
+  border-radius: 3px 3px 0 0;
+}
+
+my-clock .mn::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 70px;
+  background: #de4c4c;
+  z-index: 15;
+  border-radius: 3px 3px 0 0;
+}
+
+my-clock .sc::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 80px;
+  background: #de4c4c;
+  z-index: 20;
+  border-radius: 3px 3px 0 0;
+}
+
+my-clock #chrono-input, my-clock #minuterie-output {
+  margin-top: 1rem;
+  text-align: center;
+  justify-content: center;  
+  width: 300px;
+  height: 50%;
+}
+
+my-clock .histo-time {
+  text-align: center;
+  justify-content: center;  
+  width: 300px;
+  height: 50%;
+  color: #6bdb02;
+  margin-top: 1rem;
+}
+
+my-clock #clock-btn {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+my-clock  #clock-btn button {
+  width: 100px;
+  height: auto;
+  border: 1px solid #6bdb02;
+  background-color: transparent;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 16px;
+} 
+
+my-clock #minuterieId {
+  height: 100%;
+}
+
+my-clock #minuterieElem {
+  margin-top: 100px;
+}
+
+my-clock #minuterie-input {
+  background-color: transparent;
+  border: 3px solid gray;
+  border-radius: 15px;
+  padding-left: 0.5rem;
+  margin-left: 84px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  cursor: url(./images/too624.cur), auto;
+}
+
+body {
+  cursor: url(./images/too629.cur), auto;
+}
