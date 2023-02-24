@@ -18,7 +18,7 @@ my-taskbar {
     top: 0;
     left: 0;
     right: 0;
-    height: 30px;
+    height: 5%;
     /* Background and color */
     background-color: #000000c8;
     /* Layout and alignment */
@@ -76,7 +76,7 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
     display: none;
     position: absolute; 
     left: 0;
-    top: 30px;
+    top: 100%;
     background-color:#000000c8;
     width: 10%;
     border-radius: 0 0 1rem 0;
@@ -90,6 +90,7 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
     font-family: "Font Awesome 5 Free";
     border: none;
     padding-left: 5px;
+    margin: 2%;
   }
 
   my-taskbar #setting:hover,my-taskbar #calculator:hover,

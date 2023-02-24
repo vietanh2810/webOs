@@ -3,13 +3,8 @@ class MyTaskbar extends HTMLElement {
     super()
     this.innerHTML = `
         <div id="taskbar-apps">
+          <div>
             <div id="menu-button">Menu</div>
-            <div id="popup">
-              <div id="setting"></div>
-              <div id="calculator"></div>
-              <div id="tic-tac-toe"></div>
-              <div id="clockapp"></div>
-            </div>
             <div id="vibration"></div>
             <div id="battery"></div>
             <div id="latency"></div>
@@ -24,6 +19,14 @@ class MyTaskbar extends HTMLElement {
               <div id="minute"></div>
               <div id="second"></div>
             </div>
+          </div>
+            <div id="popup">
+              <div id="setting"></div>
+              <div id="calculator"></div>
+              <div id="tic-tac-toe"></div>
+              <div id="clockapp"></div>
+            </div>
+            
         </div>
 
       `
