@@ -1,10 +1,12 @@
+import MyStorage from '../MyStorage.js';
+
 class CalculatorApp extends HTMLElement {
-  constructor () {
-    super()
-    this.style.display = 'none'
+  constructor() {
+    super();
+    this.style.display = 'none';
   }
 
-  connectedCallback () {
+  connectedCallback() {
     this.innerHTML = `
             <div>
                 <div id="top-bar" draggable="true">
@@ -46,46 +48,45 @@ class CalculatorApp extends HTMLElement {
                     </div>
                 </div>
             </div>
-        `
+        `;
 
     this.querySelector('#close-button').addEventListener('click', () => {
-      this.style.display = 'none'
-    })
+      this.style.display = 'none';
+    });
 
-    const calculatorInput = this.querySelector('#calculator-input')
+    const calculatorInput = this.querySelector('#calculator-input');
 
-    let tmp = 0
+    let tmp = 0;
 
     this.querySelectorAll('.calculator-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         if (btn.id === 'calculator-btn-del') {
-          calculatorInput.value = calculatorInput.value.slice(0, -1)
-          calculatorInput.innerHTML = ' ' + calculatorInput.value
+          calculatorInput.value = calculatorInput.value.slice(0, -1);
+          calculatorInput.innerHTML = ` ${calculatorInput.value}`;
         } else if (btn.id === 'calculator-btn-clear') {
-          calculatorInput.value = ''
-          calculatorInput.innerHTML = calculatorInput.value
+          calculatorInput.value = '';
+          calculatorInput.innerHTML = calculatorInput.value;
         } else if (btn.id === 'calculator-btn-equal') {
-          calculatorInput.value = calculatorInput.value.replace('Ans', tmp)
-          // eslint-disable-next-line no-eval
-          calculatorInput.value = eval(calculatorInput.value)
-          calculatorInput.innerHTML = ' ' + calculatorInput.value
-          tmp = calculatorInput.value
+          calculatorInput.value = calculatorInput.value.replace('Ans', tmp);
+          calculatorInput.value = eval(calculatorInput.value);
+          calculatorInput.innerHTML = ` ${calculatorInput.value}`;
+          tmp = calculatorInput.value;
         } else if (btn.id === 'calculator-btn-ans') {
-          calculatorInput.innerHTML += 'Ans'
-          calculatorInput.value += 'Ans'
+          calculatorInput.innerHTML += 'Ans';
+          calculatorInput.value += 'Ans';
         } else if (btn.id === 'calculator-btn-percent') {
-          calculatorInput.value += '/100'
-          calculatorInput.innerHTML = calculatorInput.value
+          calculatorInput.value += '/100';
+          calculatorInput.innerHTML = calculatorInput.value;
         } else {
-          calculatorInput.value += btn.innerHTML
-          calculatorInput.innerHTML = ' ' + calculatorInput.value
+          calculatorInput.value += btn.innerHTML;
+          calculatorInput.innerHTML = ` ${calculatorInput.value}`;
         }
-        if (localStorage.getItem('vibrating') === 'true') {
-          navigator.vibrate(50)
+        if (MyStorage.getItem('vibrating') === 'true') {
+          navigator.vibrate(50);
         }
-      })
-    })
+      });
+    });
   }
 }
 
-customElements.define('my-calculator', CalculatorApp)
+customElements.define('my-calculator', CalculatorApp);

@@ -1,3 +1,12 @@
+:root {
+    --font-color-dark: #6bdb02; /* declares a variable named primary-color with a value of #007bff */
+    /* --font-color-light: #6bdb02; */
+    --secondary-app-color-dark: lightgray;
+    --primary-app-color-dark: #000000c8;
+    --top-bar-color-dark: #212121c8;
+
+  }
+
 my-desktop {
     background-image: url('./images/bg.jpeg');
     background-size: cover;
@@ -20,7 +29,7 @@ my-taskbar {
     right: 0;
     height: 5%;
     /* Background and color */
-    background-color: #000000c8;
+    background-color: var(--primary-app-color-dark);
     /* Layout and alignment */
     display: flex;
     align-items: center;
@@ -37,7 +46,7 @@ my-taskbar {
   my-taskbar #clock, my-taskbar #date, my-taskbar #battery, my-taskbar #latency, my-taskbar #menu-button, my-taskbar #vibration 
   {
     /* Text properties */
-    color: #6bdb02 !important;
+    color: var(--font-color-dark) !important;
     font-size: 13px;
     display: inline-block;
     /* Add padding */
@@ -47,7 +56,7 @@ my-taskbar {
   my-taskbar #day, my-taskbar #dayOfWeek, my-taskbar #month, my-taskbar #year,
   my-taskbar #hour, my-taskbar #minute, my-taskbar #second {
     padding: 0 !important;
-    color: #6bdb02 !important;
+    color: var(--font-color-dark) !important;
     font-size: 13px;
     display: inline-block;
   }
@@ -77,7 +86,7 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
     position: absolute; 
     left: 0;
     top: 100%;
-    background-color:#000000c8;
+    background-color: var(--primary-app-color-dark);
     width: 10%;
     border-radius: 0 0 1rem 0;
     height: auto;
@@ -85,7 +94,7 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
 
   my-taskbar #popup #setting,my-taskbar #popup #calculator,
    my-taskbar #popup #tic-tac-toe, my-taskbar #popup #clockapp {
-    color: #6bdb02;
+    color: var(--font-color-dark);
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
     border: none;
@@ -103,12 +112,12 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
   my-setting {
     display: none; 
     position: absolute;
-    top: 50%;
+    top: 50%;  
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px; /* set the width to 400 pixels */
-    height: 600px; /* set the height to 600 pixels */
-    background-color: rgb(74, 73, 73); /* set the background color to white */
+    width: 60% !important; /* set the width to 400 pixels */
+    height: 60% !important; /* set the height to 600 pixels */
+    background-color: var(--secondary-app-color-dark); /* set the background color to white */
     border-radius: 8px; /* give the element rounded corners */
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); /* add a drop shadow */
     padding: 20px; /* add padding to the element */
@@ -136,11 +145,11 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
 my-setting #top-bar, my-calculator #top-bar,
  my-tic-tac-toe #top-bar, my-clock #top-bar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 30px;
-    background-color: #212121c8;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    height: 5% !important;
+    background-color: var(--top-bar-color-dark);
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -150,15 +159,16 @@ my-setting #top-bar, my-calculator #top-bar,
 
 my-setting #top-bar p, my-calculator #top-bar p,
  my-tic-tac-toe #top-bar p, my-clock #top-bar p {
-    color: #6bdb02 !important;
+    color: var(--font-color-dark) !important;
     margin: 0;
 }
 
 my-setting .toggle-div{
-    height: 35px !important;
-    margin-top: 0.5rem;
+    height: 5% !important;
     display: flex;
     align-items: center;
+    position: relative;
+    top: 2% !important;
 }
 
 my-setting button:hover {
@@ -170,7 +180,6 @@ my-setting #latency-toggle-div p {
 }
 
 my-setting .small-toggle {
-  margin-top: 0.5rem;
   margin-right: 2rem;
 }
 
@@ -184,13 +193,16 @@ my-setting .toggle-btn {
 
 my-setting hr {
   border: 0.5px solid gray;
-  margin: 10px 0;
+  margin: 2% 0;
+  position: relative;
 }
 
 my-setting .s-toggle-div {
-  height: 35px;
-  display: flex;
-  align-items: center;
+    height: 5% !important;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 2% !important;
 }
 
 my-setting .s-toggle-div p {
@@ -218,10 +230,6 @@ my-setting, my-calculator,
   border-radius: 8px; /* give the element rounded corners */
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); /* add a drop shadow */
   padding: 20px; /* add padding to the element */
-}
-
-my-setting {
-  height: 600px !important;
 }
 
 my-calculator button {
@@ -268,7 +276,7 @@ my-calculator #calculator-input, my-clock #chrono-input, my-clock #minuterie-out
   width: 380px;
   height: 80px;
   font-size: 20px;
-  color: #6bdb02;
+  color: var(--font-color-dark);
 }
 
 my-tic-tac-toe table {
@@ -279,7 +287,7 @@ my-tic-tac-toe table {
 }
   
 my-tic-tac-toe td {
-  border: 1px solid #6bdb02;
+  border: 1px solid var(--font-color-dark);
   text-align: center;
   vertical-align: middle;
   width: 33.33%;
@@ -288,14 +296,14 @@ my-tic-tac-toe td {
 }
   
 my-tic-tac-toe  td:hover {
-  background-color: lightgray;
+  background-color: var(--secondary-app-color-dark);
   cursor: url(./images/too624.cur), auto;
 }
 
 my-tic-tac-toe #reset-div button {
   width: 100px;
   height: auto;
-  border: 1px solid #6bdb02;
+  border: 1px solid var(--font-color-dark);
   background-color: transparent;
   border-radius: 4px;
   text-align: center;
@@ -303,7 +311,7 @@ my-tic-tac-toe #reset-div button {
 }
 
 my-tic-tac-toe #reset-div button:hover {
-  background-color: lightgray;
+  background-color: var(--secondary-app-color-dark);
   cursor: url(./images/too624.cur), auto;
 }
 
@@ -329,7 +337,7 @@ my-clock #tab-btn {
 my-clock #tab-btn button{
   width: 100px;
   height: 30px;
-  border: 1px solid #6bdb02;
+  border: 1px solid var(--font-color-dark);
   background-color: transparent;
   border-radius: 4px 4px 0 0;
   border-bottom: transparent;
@@ -338,7 +346,7 @@ my-clock #tab-btn button{
 }
 
 my-clock #tab-btn button:hover,my-clock  #clock-btn button:hover {
-  background-color: lightgray;
+  background-color: var(--secondary-app-color-dark);
   cursor: url(./images/too624.cur), auto;
 }
 
@@ -348,7 +356,7 @@ my-clock #tab-content {
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  border: 1px solid   #6bdb02;
+  border: 1px solid var(--font-color-dark);
   border-radius: 0 4px 4px 4px;
 }
 
@@ -373,7 +381,7 @@ my-clock #tab-content #clock::before {
   position: absolute;
   width: 10px;
   height: 10px;
-  background: #6bdb02;
+  background: var(--font-color-dark);
   border: 2px solid #fff;
   z-index: 100000;
   border-radius: 50%;
@@ -410,7 +418,7 @@ my-clock .hr::before {
   position: absolute;
   width: 4px;
   height: 50px;
-  background: #6bdb02;
+  background: var(--font-color-dark);
   z-index: 10;
   border-radius: 3px 3px 0 0;
 }
@@ -448,7 +456,7 @@ my-clock .histo-time {
   justify-content: center;  
   width: 300px;
   height: 50%;
-  color: #6bdb02;
+  color: var(--font-color-dark);
   margin-top: 1rem;
 }
 
@@ -462,7 +470,7 @@ my-clock #clock-btn {
 my-clock  #clock-btn button {
   width: 100px;
   height: auto;
-  border: 1px solid #6bdb02;
+  border: 1px solid var(--font-color-dark);
   background-color: transparent;
   border-radius: 4px;
   text-align: center;

@@ -1,12 +1,14 @@
+import MyStorage from '../MyStorage.js';
+
 class TicTacToeApp extends HTMLElement {
-  constructor () {
-    super()
-    this.style.display = 'none'
-    this.board = ['', '', '', '', '', '', '', '', '']
-    this.turn = 'X'
+  constructor() {
+    super();
+    this.style.display = 'none';
+    this.board = ['', '', '', '', '', '', '', '', ''];
+    this.turn = 'X';
   }
 
-  connectedCallback () {
+  connectedCallback() {
     this.innerHTML = `
             <div>
             <div id="top-bar" draggable="true">
@@ -39,101 +41,104 @@ class TicTacToeApp extends HTMLElement {
                 </tr>
             </table>
             </div>
-        `
+        `;
 
     this.querySelector('#close-button').addEventListener('click', () => {
-      this.style.display = 'none'
-    })
+      this.style.display = 'none';
+    });
 
-    let xPoint = 0
-    let oPoint = 0
+    let xPoint = 0;
+    let oPoint = 0;
 
-    const xPointSpan = this.querySelector('#x-point')
-    xPointSpan.innerHTML = xPoint
-    const oPointSpan = this.querySelector('#o-point')
-    oPointSpan.innerHTML = oPoint
+    const xPointSpan = this.querySelector('#x-point');
+    xPointSpan.innerHTML = xPoint;
+    const oPointSpan = this.querySelector('#o-point');
+    oPointSpan.innerHTML = oPoint;
 
     this.querySelector('#reset-button').addEventListener('click', () => {
-      this.reset()
-    })
+      this.reset();
+    });
 
-    const turnSpan = this.querySelector('#turn')
-    turnSpan.innerHTML = this.turn
+    const turnSpan = this.querySelector('#turn');
+    turnSpan.innerHTML = this.turn;
 
     this.querySelectorAll('td').forEach((td, index) => {
-      if (localStorage.getItem('vibrating') === 'true') {
-        navigator.vibrate(50)
+      // if (localStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getItem('vibrating') === 'true') {
+        navigator.vibrate(50);
       }
       td.addEventListener('click', () => {
         if (this.board[index] === '') {
-          td.innerHTML = this.turn
-          this.board[index] = this.turn
-          turnSpan.innerHTML = this.turn === 'X' ? 'O' : 'X'
+          td.innerHTML = this.turn;
+          this.board[index] = this.turn;
+          turnSpan.innerHTML = this.turn === 'X' ? 'O' : 'X';
           if (this.checkWin(this.turn)) {
             if (this.turn === 'X') {
-              xPoint++
-              xPointSpan.innerHTML = xPoint
+              xPoint++;
+              xPointSpan.innerHTML = xPoint;
             } else {
-              oPoint++
-              oPointSpan.innerHTML = oPoint
+              oPoint++;
+              oPointSpan.innerHTML = oPoint;
             }
-            alert(`${this.turn} wins!`)
-            if (localStorage.getItem('vibrating') === 'true') {
-              navigator.vibrate(200)
+            alert(`${this.turn} wins!`);
+            // if (localStorage.getItem('vibrating') === 'true') {
+            if (MyStorage.getItem('vibrating') === 'true') {
+              navigator.vibrate(200);
             }
-            this.reset()
+            this.reset();
           } else if (this.checkDraw()) {
-            alert('Draw!')
-            if (localStorage.getItem('vibrating') === 'true') {
-              navigator.vibrate(200)
+            alert('Draw!');
+            // if (localStorage.getItem('vibrating') === 'true') {
+            if (MyStorage.getItem('vibrating') === 'true') {
+              navigator.vibrate(200);
             }
-            this.reset()
+            this.reset();
           } else {
-            this.turn = this.turn === 'X' ? 'O' : 'X'
+            this.turn = this.turn === 'X' ? 'O' : 'X';
           }
         }
-      })
-    })
+      });
+    });
   }
 
-  checkWin (player) {
+  checkWin(player) {
     return (
-      this.board[0] === player &&
-            this.board[1] === player &&
-            this.board[2] === player
-    ) ||
-            (this.board[3] === player &&
-            this.board[4] === player &&
-            this.board[5] === player) ||
-            (this.board[6] === player &&
-            this.board[7] === player &&
-            this.board[8] === player) ||
-            (this.board[0] === player &&
-            this.board[3] === player &&
-            this.board[6] === player) ||
-            (this.board[1] === player &&
-            this.board[4] === player &&
-            this.board[7] === player) ||
-            (this.board[2] === player &&
-            this.board[5] === player &&
-            this.board[8] === player) ||
-            (this.board[0] === player &&
-            this.board[4] === player &&
-            this.board[8] === player) ||
-            (this.board[2] === player &&
-            this.board[4] === player &&
-            this.board[6] === player)
+      this.board[0] === player
+            && this.board[1] === player
+            && this.board[2] === player
+    )
+            || (this.board[3] === player
+            && this.board[4] === player
+            && this.board[5] === player)
+            || (this.board[6] === player
+            && this.board[7] === player
+            && this.board[8] === player)
+            || (this.board[0] === player
+            && this.board[3] === player
+            && this.board[6] === player)
+            || (this.board[1] === player
+            && this.board[4] === player
+            && this.board[7] === player)
+            || (this.board[2] === player
+            && this.board[5] === player
+            && this.board[8] === player)
+            || (this.board[0] === player
+            && this.board[4] === player
+            && this.board[8] === player)
+            || (this.board[2] === player
+            && this.board[4] === player
+            && this.board[6] === player);
   }
 
-  checkDraw () {
-    return this.board.every(field => field !== '')
+  checkDraw() {
+    return this.board.every((field) => field !== '');
   }
 
-  reset () {
-    this.board = ['', '', '', '', '', '', '', '', '']
-    this.turn = 'X'
-    this.querySelectorAll('td').forEach(td => (td.innerHTML = ''))
+  reset() {
+    this.board = ['', '', '', '', '', '', '', '', ''];
+    this.turn = 'X';
+    this.querySelectorAll('td').forEach((td) => (td.innerHTML = ''));
   }
 }
 
-customElements.define('my-tic-tac-toe', TicTacToeApp)
+customElements.define('my-tic-tac-toe', TicTacToeApp);
