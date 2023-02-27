@@ -64,7 +64,7 @@ class TicTacToeApp extends HTMLElement {
 
     this.querySelectorAll('td').forEach((td, index) => {
       // if (localStorage.getItem('vibrating') === 'true') {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       td.addEventListener('click', () => {
@@ -82,14 +82,14 @@ class TicTacToeApp extends HTMLElement {
             }
             alert(`${this.turn} wins!`);
             // if (localStorage.getItem('vibrating') === 'true') {
-            if (MyStorage.getItem('vibrating') === 'true') {
+            if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
               navigator.vibrate(200);
             }
             this.reset();
           } else if (this.checkDraw()) {
             alert('Draw!');
             // if (localStorage.getItem('vibrating') === 'true') {
-            if (MyStorage.getItem('vibrating') === 'true') {
+            if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
               navigator.vibrate(200);
             }
             this.reset();

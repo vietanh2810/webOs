@@ -93,7 +93,7 @@ class ClockApp extends HTMLElement {
     });
 
     document.getElementById('startMinuterie').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       const input = document.getElementById('minuterie-input').value;
@@ -122,7 +122,7 @@ class ClockApp extends HTMLElement {
           output.textContent = 'Time is up!';
           const sound = new Audio('./voices/crabbity-giggity.mp3');
           sound.play();
-          if (MyStorage.getItem('vibrating') === 'true') {
+          if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
             navigator.vibrate(200);
           }
           if (Notification.permission === 'granted') {
@@ -149,14 +149,14 @@ class ClockApp extends HTMLElement {
     });
 
     document.getElementById('stopMinuterie').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       clearInterval(timer);
     });
 
     document.getElementById('resetMinuterie').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       clearInterval(timer);
@@ -170,7 +170,7 @@ class ClockApp extends HTMLElement {
     let startTime = new Date();
 
     this.querySelector('#startChrono').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       if (!running) {
@@ -204,20 +204,19 @@ class ClockApp extends HTMLElement {
     });
 
     this.querySelector('#stopChrono').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       if (running) {
         clearInterval(running);
         running = false;
-        console.log(this.querySelector('#chrono-input').innerHTML);
         this.querySelector(`#histo-time-${endClick % 7}`).innerHTML = this.querySelector('#chrono-input').innerHTML;
         endClick++;
       }
     });
 
     this.querySelector('#resetChrono').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       if (!running) {
@@ -239,10 +238,9 @@ class ClockApp extends HTMLElement {
       }
     }
     this.querySelector('#horloge').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
-      console.log('horloge');
       if (currTab !== 'horloge') {
         this.querySelector(getIdCurrTab(currTab)).style.display = 'none';
         this.querySelector('#clock').style.display = 'flex';
@@ -250,7 +248,7 @@ class ClockApp extends HTMLElement {
       }
     });
     this.querySelector('#chrono').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       if (currTab !== 'chrono') {
@@ -265,7 +263,7 @@ class ClockApp extends HTMLElement {
       }
     });
     this.querySelector('#minuterie').addEventListener('click', () => {
-      if (MyStorage.getItem('vibrating') === 'true') {
+      if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
         navigator.vibrate(50);
       }
       if (currTab !== 'minuterie') {

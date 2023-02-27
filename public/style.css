@@ -93,7 +93,7 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
   }
 
   my-taskbar #popup #setting,my-taskbar #popup #calculator,
-   my-taskbar #popup #tic-tac-toe, my-taskbar #popup #clockapp {
+   my-taskbar #popup #tic-tac-toe, my-taskbar #popup #clockapp, my-taskbar #popup #logout {
     color: var(--font-color-dark);
     background-color: transparent;
     font-family: "Font Awesome 5 Free";
@@ -103,7 +103,7 @@ my-taskbar #time::before, my-taskbar #date::before, my-taskbar #battery::before,
   }
 
   my-taskbar #setting:hover,my-taskbar #calculator:hover,
-   my-taskbar #tic-tac-toe:hover, my-taskbar #clockapp:hover  {
+   my-taskbar #tic-tac-toe:hover, my-taskbar #clockapp:hover, my-taskbar #logout:hover {
     background-color: rgb(83, 121, 147) !important;
     border-radius: 1rem;
     cursor: url(./images/too624.cur), auto;
@@ -500,4 +500,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 body {
   cursor: url(./images/too629.cur), auto;
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%px;
+  height: 30%px;
+  margin: auto;
 }

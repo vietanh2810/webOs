@@ -81,7 +81,7 @@ class CalculatorApp extends HTMLElement {
           calculatorInput.value += btn.innerHTML;
           calculatorInput.innerHTML = ` ${calculatorInput.value}`;
         }
-        if (MyStorage.getItem('vibrating') === 'true') {
+        if (MyStorage.getCurrentUserValue('vibrating') === 'true') {
           navigator.vibrate(50);
         }
       });

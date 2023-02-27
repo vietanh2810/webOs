@@ -27,6 +27,7 @@ class MyTaskbar extends HTMLElement {
               <div id="calculator"></div>
               <div id="tic-tac-toe"></div>
               <div id="clockapp"></div>
+              <div id="logout"></div>
             </div>
             
         </div>
@@ -35,7 +36,6 @@ class MyTaskbar extends HTMLElement {
   }
 
   connectedCallback() {
-    // Get current date and update date div
     function updateDate() {
       const date = new Date();
       const options = {
@@ -55,10 +55,10 @@ class MyTaskbar extends HTMLElement {
       this.querySelector('#day').innerHTML = dateArray[2].substring(0, dateArray[2].length - 1);
       this.querySelector('#year').innerHTML = dateArray[3];
     }
-    this.querySelector('#date').style.display = MyStorage.getItem('date');
-    this.querySelector('#month').style.display = MyStorage.getItem('month');
-    this.querySelector('#day').style.display = MyStorage.getItem('day');
-    this.querySelector('#year').style.display = MyStorage.getItem('ans');
+    this.querySelector('#date').style.display = MyStorage.getCurrentUserValue('date');
+    this.querySelector('#month').style.display = MyStorage.getCurrentUserValue('month');
+    this.querySelector('#day').style.display = MyStorage.getCurrentUserValue('day');
+    this.querySelector('#year').style.display = MyStorage.getCurrentUserValue('ans');
 
     setInterval(updateDate.bind(this), 1000);
 
@@ -76,10 +76,10 @@ class MyTaskbar extends HTMLElement {
       this.querySelector('#second').innerHTML = separatorSeconds + seconds;
     }
 
-    this.querySelector('#hour').style.display = MyStorage.getItem('hour');
-    this.querySelector('#minute').style.display = MyStorage.getItem('minute');
-    this.querySelector('#second').style.display = MyStorage.getItem('second');
-    this.querySelector('#clock').style.display = MyStorage.getItem('clock');
+    this.querySelector('#hour').style.display = MyStorage.getCurrentUserValue('hour');
+    this.querySelector('#minute').style.display = MyStorage.getCurrentUserValue('minute');
+    this.querySelector('#second').style.display = MyStorage.getCurrentUserValue('second');
+    this.querySelector('#clock').style.display = MyStorage.getCurrentUserValue('clock');
 
     setInterval(updateTime.bind(this), 1000);
 
@@ -93,13 +93,13 @@ class MyTaskbar extends HTMLElement {
       battery.addEventListener('chargingchange', updateBattery.bind(this));
     });
 
-    this.querySelector('#battery').style.display = MyStorage.getItem('battery');
+    this.querySelector('#battery').style.display = MyStorage.getCurrentUserValue('battery');
 
     function updateLatency() {
-      const domain = MyStorage.getItem('domain') === null ? 'google' : MyStorage.getItem('domain');
-      MyStorage.setItem('domain', domain);
-      const tmp = MyStorage.getItem('interval') === null ? 3 : MyStorage.getItem('interval');
-      MyStorage.setItem('refreshrate', tmp);
+      const domain = MyStorage.getCurrentUserValue('domain') === null ? 'google' : MyStorage.getCurrentUserValue('domain');
+      MyStorage.setCurrentUserValue('domain', domain);
+      const tmp = MyStorage.getCurrentUserValue('interval') === null ? 3 : MyStorage.getCurrentUserValue('interval');
+      MyStorage.setCurrentUserValue('refreshrate', tmp);
       const res = domain.charAt(0).toUpperCase() + domain.slice(1);
       const startTime = Date.now();
       const image = new Image();
@@ -110,17 +110,17 @@ class MyTaskbar extends HTMLElement {
       }.bind(this);
     }
 
-    this.querySelector('#latency').style.display = MyStorage.getItem('latency');
+    this.querySelector('#latency').style.display = MyStorage.getCurrentUserValue('latency');
 
     function changeInterval() {
-      const interval = MyStorage.getItem('interval') || 3;
+      const interval = MyStorage.getCurrentUserValue('interval') || 3;
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         updateLatency.bind(this)();
       }, interval * 1000);
     }
 
-    const interval = MyStorage.getItem('interval') || 3;
+    const interval = MyStorage.getCurrentUserValue('interval') || 3;
     let intervalId = setInterval(() => {
       updateLatency.bind(this)();
     }, interval * 1000);
@@ -188,16 +188,23 @@ class MyTaskbar extends HTMLElement {
       popup.style.display = 'none';
     });
 
-    const isVibrationOn = MyStorage.getItem('vibration') === null ? true : MyStorage.getItem('vibration');
-    MyStorage.setItem('vibration', isVibrationOn);
+    const isVibrationOn = MyStorage.getCurrentUserValue('vibrating') === null ? 'true' : MyStorage.getCurrentUserValue('vibrating');
+    MyStorage.setCurrentUserValue('vibrating', isVibrationOn);
     const vibration = this.querySelector('#vibration');
-    vibration.innerHTML = ` Vibrations: ${isVibrationOn === true ? 'On' : 'Off'} `;
-    const isShowVibration = MyStorage.getItem('vibration') === null ? true : MyStorage.getItem('vibration');
-    MyStorage.setItem('vibration', isShowVibration);
+    vibration.innerHTML = ` Vibrations: ${isVibrationOn === 'true' ? 'On' : 'Off'} `;
+    const isShowVibration = MyStorage.getCurrentUserValue('vibration') === null ? 'inline-block' : MyStorage.getCurrentUserValue('vibration');
+    MyStorage.setCurrentUserValue('vibration', isShowVibration);
     document.getElementById('vibration').style.display = isShowVibration;
 
-    const isVibrating = MyStorage.getItem('vibrating') === null ? true : MyStorage.getItem('vibrating');
-    MyStorage.setItem('vibrating', isVibrating);
+    const myDesktop = document.getElementById('desktop');
+
+    const logOut = this.querySelector('#logout');
+    logOut.innerHTML = `
+      <button id="logout">Log Out</button>
+    `;
+    logOut.addEventListener('click', () => {
+      myDesktop.dispatchEvent(new CustomEvent('logout'));
+    });
   }
 }
 
